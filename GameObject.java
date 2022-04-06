@@ -51,7 +51,28 @@ public class GameObject
       {    
           return false;    
       }
-      
+      else if (g instanceof VictoryBlock) //Check for victory block so player can pass under it
+      {
+         
+         //This square
+         double topthis = this.y;
+         double bottomthis = this.y+25;
+         double leftthis = this.x;
+         double rightthis = this.x+25;
+         
+         //g square
+         double topother = g.getY();
+         double bottomother = g.getY()+25;
+         double leftother = g.getX();
+         double rightother = g.getX()+25;
+         
+         //Compare as specified by project doc
+         boolean compare = (  (bottomthis <= topother+1) ||
+                              (topthis >= bottomother-1) ||
+                              (leftthis >= rightother-1) ||
+                              (rightthis <= leftother+1));
+         return (!(compare));
+      }
       else
       {
          //This square
